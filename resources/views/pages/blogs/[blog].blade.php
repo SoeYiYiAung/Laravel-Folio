@@ -1,8 +1,7 @@
 @php
+    use Illuminate\Support\Facades\Gate;
 
-    use App\Models\Blog;
-    $blogs= Blog::all();
-
+    Gate::authorize('view',$blog)
 @endphp
 
 <!DOCTYPE html>
@@ -14,12 +13,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>My Blogs</h1>
-
-    <ul>
-        @foreach ($blogs as $blog)
-        <li>{{$blog->title}} Author-{{$blog->author->name}}</li>
-        @endforeach
-    </ul>
+    <h1>Blog detail id - {{$blog->title}}</h1>
+    <h3>Author - {{$blog->author->name}}</h3>
 </body>
 </html>
